@@ -1,0 +1,27 @@
+
+import RPi.GPIO as GPIO
+import time
+
+led1Pin= 7
+led2Pin= 11
+proximityPin= 12
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(proximityPin,GPIO.IN)
+GPIO.setup(led1Pin,GPIO.OUT)
+GPIO.setup(led2Pin,GPIO.OUT)
+
+while True:
+
+    i=GPIO.input(proximityPin)
+    
+    if i==1:
+        print"object Detected",i
+        GPIO.output(led1Pin, True)
+        GPIO.output(led2Pin, True)
+
+    if i==0:
+        print"No Detection",i
+        GPIO.output(led1Pin, False)
+        GPIO.output(led2Pin, False)

@@ -1,0 +1,24 @@
+import RPi.GPIO as GPIO
+import dht11
+import time
+
+
+# initialize GPIO
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+
+
+# read data using pin 15
+dhtPin = dht11.DHT11(pin=15)
+
+while True:
+    dhtValue = dhtPin.read()
+    if dhtValue.is_valid():
+
+        print("Temperature: %d C" % dhtValue.temperature)
+        print("Humidity: %d %%" % dhtValue.humidity)
+
+    time.sleep(1)
+
+
+

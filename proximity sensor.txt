@@ -1,0 +1,18 @@
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(15,GPIO.IN)
+GPIO.setup(16,GPIO.OUT)
+
+while True:
+    i=GPIO.input(15)
+    if i==1:
+        print"object is Detected",i
+        GPIO.output(16, True)
+        
+    if i==0:
+        print"Object is not detected",i
+        GPIO.output(16, False)
